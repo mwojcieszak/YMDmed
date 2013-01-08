@@ -17,17 +17,17 @@ public class ViewPacjent extends Activity {
 	   public void onCreate(Bundle savedInstanceState) 
 	   {
 	      super.onCreate(savedInstanceState);
-	     // setContentView(R.layout.view_country);
+	      setContentView(R.layout.view_country);
 	      
 	      setUpViews();
 	      Bundle extras = getIntent().getExtras();
-	      //rowID = extras.getLong(CountryList.ROW_ID); 
+	      rowID = extras.getLong(CountryList.ROW_ID); 
 	   }
 	   
 	   private void setUpViews() {
-		  // nameTv = (TextView) findViewById(R.id.name);
-		  // surnameTv = (TextView) findViewById(R.id.surname);
-		  // peselTv = (TextView) findViewById(R.id.pesel);
-		  // krewTv = (TextView) findViewById(R.id.krew);
+		   nameTv = (TextView) findViewById(R.id.name);
+		   surnameTv = (TextView) findViewById(R.id.surname);
+		   peselTv = (TextView) findViewById(R.id.pesel);
+		   krewTv = (TextView) findViewById(R.id.krew);
 	   }
 }
