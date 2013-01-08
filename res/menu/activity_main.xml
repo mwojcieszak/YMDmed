@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+     <item
+        android:id="@+id/menu_add"
+        android:orderInCategory="1"
+        android:title="@string/menu_add"/>
+     <item
+        android:id="@+id/menu_list"
+        android:orderInCategory="2"
+        android:title="@string/menu_list"/>
+     <!-- 
+     <item
+        android:id="@+id/menu_deleteAll"
+        android:orderInCategory="3"
+        android:title="@string/menu_deleteAll"/> -->
+     <item
+        android:id="@+id/menu_quit"
+        android:orderInCategory="4"
+        android:title="@string/menu_quit"/>
+
+</menu>

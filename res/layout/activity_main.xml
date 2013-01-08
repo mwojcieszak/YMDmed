@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/hello" />
+
+    <TableLayout
+        android:id="@+id/tableId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp">
+        <TableRow>
+        <Button
+            android:id="@+id/menu_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/list_add_user"
+            android:text="Add patient" />
+
+        <Button
+            android:id="@+id/menu_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/type_list"
+            android:text="@string/menu_list" />
+    </TableRow>
+        <TableRow>
+
+        <Button
+            android:id="@+id/menu_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/search_user"
+            android:text="Search patient" />
+
+        <Button
+            android:id="@+id/menu_chart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/datashowchart"
+            android:text="Chart patient" />
+   </TableRow>
+        <TableRow>
+        <Button
+            android:id="@+id/menu_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/edit_user"
+            android:text="Edit patient" />
+
+        <Button
+            android:id="@+id/menu_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/list_remove_user"
+            android:text="Delete All patient" />
+      </TableRow>
+    </TableLayout>
+    
+    <Button
+            android:id="@+id/menu_exit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/exit"
+            android:text="Exit" />
+    
+
+    <ListView
+        android:id="@+id/contentlist"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+
+</LinearLayout>

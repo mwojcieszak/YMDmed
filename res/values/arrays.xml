@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>  
+  <resources>  
+      <string-array name="spinner_array"> 
+          <item>Mężczyzna</item>  
+          <item>Kobieta</item>
+      </string-array> 
+      
+      <string-array name="krew_array"> 
+          <item>0 Rh+</item>  
+          <item>0 Rh-</item>
+          
+          <item>A Rh+</item>  
+          <item>A Rh-</item>
+          
+          <item>B Rh+</item>  
+          <item>B Rh-</item>
+          
+          <item>AB Rh+</item>  
+          <item>AB Rh-</item>
+      </string-array> 
+  </resources>  

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">E-pacjent</string>
+    <string name="hello">Witaj w program zarządzającym obchodem!</string>
+    
+    <!-- Menu -->
+    <string name="menu_add">Dodaj</string>
+    <string name="menu_list">Lista</string>
+    <string name="menu_deleteAll">Usuń wszystko</string>
+    <string name="menu_quit">Wyjście</string>
+    
+    <!-- Hints -->
+    <string name="name_hint">Wprowadź imię</string>
+    <string name="surname_hint">Wprowadź nazwisko</string>
+    <string name="plec_hint">Wprowadź płeć</string>
+    
+    <!-- Buttons -->
+    <string name="BtnAdd">Dodaj</string>
+    <string name="BtnBack">Powrót</string>
+    <!-- End of Buttons -->
+    
+    <string name="quit">Zamknij E-pacjent</string>
+    <string name="really_quit">Czy na pewno chcesz wyjść?</string>
+    <string name="yes">Tak</string>
+    <string name="no">Nie</string>
+    
+    <string name="radio1">Mężczyzna</string>
+    <string name="radio2">Kobieta</string>
+    
+    <string name="app_add_user">Dodaj pacjenta</string>
+    <string name="app_list_user">Lista pacjentów</string>
+    <string name="app_view_user">Podgląd pacjenta</string>
+
+</resources>
