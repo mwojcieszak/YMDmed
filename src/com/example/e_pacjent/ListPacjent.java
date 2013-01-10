@@ -1,12 +1,18 @@
 package com.example.e_pacjent;
 
 import android.app.Activity;
+import android.app.ListActivity;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class ListPacjent extends Activity {
 	private SQLiteAdapter mySQLiteAdapter;
@@ -29,13 +35,23 @@ public class ListPacjent extends Activity {
 		startManagingCursor(cursor);
 
 		String[] from = new String[] { SQLiteAdapter.KEY_CONTENT1,
-				SQLiteAdapter.KEY_CONTENT2, SQLiteAdapter.KEY_CONTENT3, SQLiteAdapter.KEY_CONTENT4 };
-		int[] to = new int[] { R.id.text1, R.id.text2, R.id.text3, R.id.text4 };
+				SQLiteAdapter.KEY_CONTENT2 };
+		int[] to = new int[] { R.id.text1, R.id.text2 };
 
 		SimpleCursorAdapter cursorAdapter = new SimpleCursorAdapter(this,
 				R.layout.row, cursor, from, to);
 
 		listContent.setAdapter(cursorAdapter);
+		
+//		listContent.setOnItemClickListener(new OnItemClickListener() {
+//			@Override
+//			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+//			long arg3) {
+//			 ListView lv = (ListView) arg0;
+//			 TextView tv = (TextView) lv.getChildAt(arg2);
+//			 String s = tv.getText().toString();
+//			 Toast.makeText(ListPacjent.this, "Clicked item is"+s, Toast.LENGTH_LONG).show();
+//			} });
 
 		mySQLiteAdapter.close();
 
@@ -47,11 +63,11 @@ public class ListPacjent extends Activity {
 		getMenuInflater().inflate(R.menu.activity_main, menu);
 		return true;
 	}
+
 	@Override
     public void onBackPressed()
     {
 		ListPacjent.this.finish();
        
     }
-
 }

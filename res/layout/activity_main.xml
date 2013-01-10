@@ -28,15 +28,9 @@
             android:layout_height="wrap_content"
             android:drawableTop="@drawable/type_list"
             android:text="@string/menu_list" />
+
     </TableRow>
         <TableRow>
-
-        <Button
-            android:id="@+id/menu_search"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableTop="@drawable/search_user"
-            android:text="Search patient" />
 
         <Button
             android:id="@+id/menu_chart"
@@ -46,12 +40,6 @@
             android:text="Chart patient" />
    </TableRow>
         <TableRow>
-        <Button
-            android:id="@+id/menu_edit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableTop="@drawable/edit_user"
-            android:text="Edit patient" />
 
         <Button
             android:id="@+id/menu_delete"
@@ -68,11 +56,11 @@
             android:layout_height="wrap_content"
             android:drawableTop="@drawable/exit"
             android:text="Exit" />
-    
 
-    <ListView
-        android:id="@+id/contentlist"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent" />
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="test" />
 
 </LinearLayout>

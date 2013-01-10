@@ -47,7 +47,7 @@ public class MainActivity extends Activity implements OnClickListener {
 			//startActivityForResult(i,2);
 		}
 		if (v.getId() == R.id.menu_list) {
-			Intent a = new Intent(MainActivity.this, ListPacjent.class);
+			Intent a = new Intent(MainActivity.this, ListAllPacjent.class);
 			// start the second Activity
 			this.startActivity(a);
 			//startActivityForResult(a,3);
@@ -56,7 +56,7 @@ public class MainActivity extends Activity implements OnClickListener {
 			mySQLiteAdapter = new SQLiteAdapter(this);
 			mySQLiteAdapter.openToWrite();
 			mySQLiteAdapter.deleteAll();
-			//Wstawiæ komunikat z potwierdzeniem usuniêcia
+			//Wstawi komunikat z potwierdzeniem usuniÄ™cia
 			Intent b = new Intent(this, MainActivity.class);
 			this.startActivity(b);
 		}

@@ -23,11 +23,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AddPacjent"
-            android:label="@string/app_name"/>
+            android:name="com.example.e_pacjent.AddPacjent"
+            android:label="@string/app_name" />
         <activity
-            android:name=".ListPacjent"
-            android:label="@string/app_name"/>
+            android:name="com.example.e_pacjent.ListPacjent"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.example.e_pacjent.ListAllPacjent"
+            android:label="@string/title_activity_list_all_pacjent" >
+        </activity>
+        <activity
+            android:name="com.example.e_pacjent.ViewPacjent"
+            android:label="@string/title_activity_list_all_pacjent" >
+        </activity>
     </application>
 
 </manifest>
