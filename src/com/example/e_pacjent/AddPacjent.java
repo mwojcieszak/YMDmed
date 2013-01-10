@@ -24,7 +24,7 @@ public class AddPacjent extends Activity implements OnClickListener {
 	private Spinner SpinnerList;
 	private SQLiteAdapter mySQLiteAdapter;
 	ListView listContent;
-	RadioGroup rgGender;
+
 	SimpleCursorAdapter cursorAdapter;
 	Cursor cursor;
 
@@ -63,15 +63,11 @@ public class AddPacjent extends Activity implements OnClickListener {
 		if (v.getId() == R.id.BtnAdd) {
 			mySQLiteAdapter = new SQLiteAdapter(this);
 			mySQLiteAdapter.openToWrite();
-			
-			rgGender = (RadioGroup) findViewById(R.id.gender);
-			int selected = rgGender.getCheckedRadioButtonId();
-			RadioButton rbSelected = (RadioButton) findViewById(selected);
 
 			String data1 = inputContent1.getText().toString();
 			String data2 = inputContent2.getText().toString();
-			//String data3 = inputContent3.getText().toString();
-			String data3 = rbSelected.getText().toString();
+			String data3 = inputContent3.getText().toString();
+			
 			String SpinnerData = SpinnerList.getSelectedItem().toString();
 
 			if (data1.trim().equalsIgnoreCase("")) {
@@ -86,12 +82,15 @@ public class AddPacjent extends Activity implements OnClickListener {
 				return;
 			}
 
+
 			mySQLiteAdapter.insert(data1, data2, data3, SpinnerData);
 			AddPacjent.this.finish();
 			// Intent i = new Intent(this, MainActivity.class);
 			// startActivity(i);
 		}
-
+		
+		
+		
 		if (v.getId() == R.id.BtnBack) {
 			AddPacjent.this.finish();
 

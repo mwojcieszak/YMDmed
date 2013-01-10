@@ -27,9 +27,5 @@
     
     <string name="radio1">Mężczyzna</string>
     <string name="radio2">Kobieta</string>
-    
-    <string name="app_add_user">Dodaj pacjenta</string>
-    <string name="app_list_user">Lista pacjentów</string>
-    <string name="app_view_user">Podgląd pacjenta</string>
 
 </resources>
