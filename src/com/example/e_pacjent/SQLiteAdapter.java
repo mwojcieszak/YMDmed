@@ -11,18 +11,12 @@ public class SQLiteAdapter {
 
 	public static final String MYDATABASE_NAME = "MY_DATABASE1";
 	public static final String MYDATABASE_TABLE = "MY_TABLE1";
-	public static final String MYDATABASE_TABLE_REL = "MY_TABLE2";
 	public static final int MYDATABASE_VERSION = 2;
 	public static final String KEY_ID = "_id";
 	public static final String KEY_CONTENT1 = "Imie";
 	public static final String KEY_CONTENT2 = "Nazwisko";
 	public static final String KEY_CONTENT3 = "Plec";
 	public static final String KEY_CONTENT4 = "Krew";
-	public static final String KEY_CONTENT6 = "Patient_id";
-	public static final String KEY_CONTENT7 = "Date";
-	public static final String KEY_CONTENT8 = "Temperature";
-	public static final String KEY_CONTENT9 = "Blood_presure";
-	public static final String KEY_CONTENT10 = "Note";
 	
 
 	// create table MY_DATABASE (ID integer primary key, Content text not null);
@@ -33,15 +27,6 @@ public class SQLiteAdapter {
 			+ KEY_CONTENT2 + " text not null, "
 			+ KEY_CONTENT3 + " text not null, "
 			+ KEY_CONTENT4 + " text not null);";
-	
-	private static final String SCRIPT_CREATE_DATABASE2 = "create table "
-			+ MYDATABASE_TABLE_REL + " (" + KEY_ID
-			+ " integer primary key autoincrement, " 
-			+ KEY_CONTENT6 + " text not null REFERENCES PATIENT, "
-			+ KEY_CONTENT7 + " text not null, "
-			+ KEY_CONTENT8 + " text not null, "
-			+ KEY_CONTENT9 + " text not null,"
-			+ KEY_CONTENT10 + " text not null);";
 
 	private SQLiteHelper sqLiteHelper;
 	private SQLiteDatabase sqLiteDatabase;
@@ -85,12 +70,25 @@ public class SQLiteAdapter {
 	}
 
 	public Cursor queueAll() {
-		String[] columns = new String[] { KEY_ID, KEY_CONTENT1, KEY_CONTENT2 };
+		String[] columns = new String[] { KEY_ID, KEY_CONTENT1, KEY_CONTENT2, KEY_CONTENT3, KEY_CONTENT4 };
 		Cursor cursor = sqLiteDatabase.query(MYDATABASE_TABLE, columns, null,
 				null, null, null, null);
 
 		return cursor;
 	}
+	
+	public Cursor getOneContact(long id) 
+	   {
+	      return sqLiteDatabase.query(MYDATABASE_TABLE, null, "_id=" + id, null, null, null, null);
+	   }
+	
+	public void deleteContact(long id) 
+	   {
+	      openToRead(); 
+	      sqLiteDatabase.delete(MYDATABASE_TABLE, "_id=" + id, null);
+	      //sqLiteDatabase.delete("pacjent", "_id=" + id, null);
+	      close();
+	   }
 
 	public class SQLiteHelper extends SQLiteOpenHelper {
 
@@ -103,7 +101,6 @@ public class SQLiteAdapter {
 		public void onCreate(SQLiteDatabase db) {
 			// TODO Auto-generated method stub
 			db.execSQL(SCRIPT_CREATE_DATABASE);
-			db.execSQL(SCRIPT_CREATE_DATABASE2);
 		}
 
 		@Override

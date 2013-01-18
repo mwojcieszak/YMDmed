@@ -30,7 +30,7 @@
             android:text="@string/menu_list" />
 
     </TableRow>
-        <TableRow>
+      <!--   <TableRow>
 
         <Button
             android:id="@+id/menu_chart"
@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:drawableTop="@drawable/datashowchart"
             android:text="Chart patient" />
-   </TableRow>
+   </TableRow> -->
         <TableRow>
 
         <Button
@@ -47,20 +47,16 @@
             android:layout_height="wrap_content"
             android:drawableTop="@drawable/list_remove_user"
             android:text="Delete All patient" />
-      </TableRow>
-    </TableLayout>
-    
-    <Button
+        
+        <Button
             android:id="@+id/menu_exit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableTop="@drawable/exit"
             android:text="Exit" />
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="test" />
+      </TableRow>
+    </TableLayout>
+    
+  
 
 </LinearLayout>

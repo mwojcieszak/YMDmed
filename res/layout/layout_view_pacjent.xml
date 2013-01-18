@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+      android:layout_width="fill_parent" 
+      android:layout_height="wrap_content"
+      android:stretchColumns="1" 
+      android:layout_margin="5dp">
+   
+       <TableRow>         
+         <TextView 
+            style="@style/StyleLabel"
+            android:text="@string/name_lbl"/>
+         <TextView 
+            android:id="@+id/name" 
+            style="@style/StyleText"/>         
+      </TableRow>
+
+      <TableRow>         
+         <TextView 
+            style="@style/StyleLabel"
+            android:text="@string/surname_lbl"/>         
+         <TextView 
+            android:id="@+id/surname"
+            style="@style/StyleText"/>         
+      </TableRow>
+
+      <TableRow>         
+         <TextView 
+            style="@style/StyleLabel"
+            android:text="@string/plec_lbl"/>         
+         <TextView 
+            android:id="@+id/plec"
+            style="@style/StyleText"/>         
+      </TableRow>
+      
+      <TableRow>         
+         <TextView 
+            style="@style/StyleLabel"
+            android:text="@string/krew_lbl"/>         
+         <TextView 
+            android:id="@+id/krew"
+            style="@style/StyleText"/>         
+      </TableRow>
+           
+   </TableLayout>

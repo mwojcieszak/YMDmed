@@ -19,12 +19,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class AddPacjent extends Activity implements OnClickListener {
-	EditText inputContent1, inputContent2, inputContent3;
+	private long id;
+	private EditText inputContent1, inputContent2, inputContent3;
 	Button buttonAdd, buttonBack;
 	private Spinner SpinnerList;
 	private SQLiteAdapter mySQLiteAdapter;
 	ListView listContent;
-
+	RadioGroup rgGender;
 	SimpleCursorAdapter cursorAdapter;
 	Cursor cursor;
 
@@ -37,7 +38,7 @@ public class AddPacjent extends Activity implements OnClickListener {
 
 		inputContent1 = (EditText) findViewById(R.id.content1);
 		inputContent2 = (EditText) findViewById(R.id.content2);
-		inputContent3 = (EditText) findViewById(R.id.content3);
+		//inputContent3 = (EditText) findViewById(R.id.content3);
 
 		// buttonAdd = (Button) findViewById(R.id.Btnadd);
 		View Add = findViewById(R.id.BtnAdd);
@@ -63,11 +64,15 @@ public class AddPacjent extends Activity implements OnClickListener {
 		if (v.getId() == R.id.BtnAdd) {
 			mySQLiteAdapter = new SQLiteAdapter(this);
 			mySQLiteAdapter.openToWrite();
+			
+			rgGender = (RadioGroup) findViewById(R.id.gender);
+			int selected = rgGender.getCheckedRadioButtonId();
+			RadioButton rbSelected = (RadioButton) findViewById(selected);
 
 			String data1 = inputContent1.getText().toString();
 			String data2 = inputContent2.getText().toString();
-			String data3 = inputContent3.getText().toString();
-			
+			//String data3 = inputContent3.getText().toString();
+			String data3 = rbSelected.getText().toString();
 			String SpinnerData = SpinnerList.getSelectedItem().toString();
 
 			if (data1.trim().equalsIgnoreCase("")) {
@@ -82,15 +87,12 @@ public class AddPacjent extends Activity implements OnClickListener {
 				return;
 			}
 
-
 			mySQLiteAdapter.insert(data1, data2, data3, SpinnerData);
 			AddPacjent.this.finish();
 			// Intent i = new Intent(this, MainActivity.class);
 			// startActivity(i);
 		}
-		
-		
-		
+
 		if (v.getId() == R.id.BtnBack) {
 			AddPacjent.this.finish();
 

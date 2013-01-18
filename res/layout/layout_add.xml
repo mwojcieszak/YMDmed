@@ -9,21 +9,23 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:hint="@string/name_hint"
-        android:inputType="textPersonName|textCapWords" />
+        android:inputType="textPersonName|textCapWords" 
+        style="@style/StyleEditText"/>
 
     <EditText
         android:id="@+id/content2"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:hint="@string/surname_hint"
-        android:inputType="textPersonName|textCapWords" />
+        android:inputType="textPersonName|textCapWords" 
+        style="@style/StyleEditText"/>
 
-    <EditText
-        android:id="@+id/content3"
+    <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/plec_hint"
-        android:inputType="textPersonName|textCapWords" />
+        android:layout_marginBottom="10dp"
+        android:text="Wybierz płeć: "
+        android:textSize="20sp" />
 
     <RadioGroup
         android:id="@+id/gender"
@@ -48,7 +50,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:text="Wybierz krew: "
+        android:text="Wybierz grupę krwi: "
         android:textSize="20sp" />
 
     <Spinner

@@ -1,75 +1,111 @@
 package com.example.e_pacjent;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.View;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.CursorAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.view.View;
+import android.app.ListActivity;
 
-public class ListAllPacjent extends Activity {
-	private SQLiteAdapter mySQLiteAdapter;
-	Cursor cursor;
 
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.layout_list);
+public class ListAllPacjent extends ListActivity {
+	
+	 public static final String ROW_ID = "row_id";
+	 private ListView conListView;
+	 private CursorAdapter cursorAdapter;
+	 
+	 Cursor cursor;
+	   
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        
+        conListView=getListView();
+        conListView.setOnItemClickListener(viewConListener);
+        
+      
+        String[] from = new String[] { SQLiteAdapter.KEY_CONTENT1,
+				SQLiteAdapter.KEY_CONTENT2 };
+		int[] to = new int[] { R.id.text1, R.id.text2};
 
-		ListView listContent = (ListView) findViewById(R.id.contentlist);
-		try {
-			/*
-			 * Open the same SQLite database and read all it's content.
-			 */
-			mySQLiteAdapter = new SQLiteAdapter(this);
-			mySQLiteAdapter.openToRead();
-	
-			Cursor cursor = mySQLiteAdapter.queueAll();
-			startManagingCursor(cursor);
-	
-			String[] from = new String[] { SQLiteAdapter.KEY_CONTENT1,
-					SQLiteAdapter.KEY_CONTENT2 };
-			int[] to = new int[] { R.id.text1, R.id.text2 };
-	
-			SimpleCursorAdapter cursorAdapter = new SimpleCursorAdapter(this,
-					R.layout.row, cursor, from, to);
-	
-			listContent.setAdapter(cursorAdapter);
-	
-			
-		        listContent.setOnItemClickListener(new OnItemClickListener() {
-		          public void onItemClick(AdapterView<?> parent, View view,
-		              int position, long id) {
-		 
-		              // selected item
-
-		 
-		              // Launching new Activity on selecting single List Item
-		              Intent i = new Intent(getApplicationContext(), ViewPacjent.class);
-		             // // sending data to new activity
-		              //Context context = getApplicationContext();
-		             // CharSequence text = patient;
-		             // int duration = Toast.LENGTH_SHORT;
-	
-		              
-		              
-		              TextView v =(TextView) view.findViewById(R.id.text1);
-		              Toast.makeText(getApplicationContext(), "selected Item Name is "+v.getText(), Toast.LENGTH_LONG).show();
-
-		             // startActivity(i);
-		 
-		          }
-		        });
-		} catch (Exception e) {
-			Intent i = new Intent(getApplicationContext(), MainActivity.class);
-			startActivity(i);
-		}
-		mySQLiteAdapter.close();
+		cursorAdapter = new SimpleCursorAdapter(this, R.layout.row, cursor, from, to);
+               
+        setListAdapter(cursorAdapter); // set adapter
     }
+	
+	
+	
+	
+    @Override
+    protected void onResume() 
+    {
+       super.onResume();  
+       new GetContacts().execute((Object[]) null);
+     } 
+	
+	
+	
+	
+	 @Override
+	    public boolean onCreateOptionsMenu(Menu menu) 
+	    {
+	       super.onCreateOptionsMenu(menu);
+	       MenuInflater inflater = getMenuInflater();
+	       inflater.inflate(R.menu.activity_main, menu);
+	       return true;
+	    }   
+	    
+	    @Override
+	    public boolean onOptionsItemSelected(MenuItem item) 
+	    {
+	       Intent addContact = new Intent(ListAllPacjent.this, AddPacjent.class);
+	       startActivity(addContact);
+	       return super.onOptionsItemSelected(item);
+	    }
+	
+	
+	@Override
+    public void onBackPressed()
+    {
+		ListAllPacjent.this.finish();
+       
+    }
+	
+	private class GetContacts extends AsyncTask<Object, Object, Cursor> 
+    {
+       SQLiteAdapter dbConnector = new SQLiteAdapter(ListAllPacjent.this);
+
+       @Override
+       protected Cursor doInBackground(Object... params)
+       {
+          dbConnector.openToRead();
+          return dbConnector.queueAll(); 
+       } 
+       
+       @Override
+       protected void onPostExecute(Cursor result)
+       {
+          cursorAdapter.changeCursor(result); // set the adapter's Cursor
+          dbConnector.close();
+       } 
+    } 
+	
+	OnItemClickListener viewConListener = new OnItemClickListener() 
+    {
+       public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,long arg3) 
+       {         
+          Intent viewCon = new Intent(ListAllPacjent.this, ViewPacjent.class);
+          viewCon.putExtra(ROW_ID, arg3);
+          startActivity(viewCon);
+       }
+    };  
 
 }
